@@ -1,0 +1,35 @@
+<h4>Shoe</h4>
+<form class="" action="/" method="post">
+  <input type="text" placeholder="name" value="">
+  <input type="text" placeholder="shoeType" value="">
+  <input type="text" placeholder="shoeStyle" value="">
+<h4>Shoe Details</h4>
+  <input type="text" placeholder="heelHeight" value="">
+  <input type="text" placeholder="size" value="">
+  <input type="text" placeholder="color" value="">
+  <input type="text" placeholder="material" value="">
+  <button type="submit" name="button">Make a New</button>
+</form>
+
+<h1>All the Shoes!!!</h1>
+{{#shoe}}
+    <ul>
+      <li>
+        {{name}}
+        {{shoeType}}
+        {{shoeStyle}}
+        {{heelHeight}},
+        {{size}},
+        {{color}},
+        {{material}}
+      </li>
+    </ul>
+
+<form class="" action="/{{id}}/delete" method="post">
+  <button type="submit" name="button">Trash</button>
+</form>
+
+<form class="" action="/{{id}}/edit" method="post">
+<button type="submit" name="button">Change Me</button>
+</form>
+{{/shoe}}
