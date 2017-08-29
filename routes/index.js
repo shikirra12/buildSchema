@@ -1,8 +1,21 @@
 const express = require('express');
-const Shoe = require('../models/index')
+const Shoe = require('../models/shoe')
 const router = express.Router();
 
-// let results = [];
+let results = [];
+
+// function getShoe() {
+//   Shoe.find({}).sort('name')
+//   .then(function(shoe) {
+//     results = shoe;
+//     next();
+    // res.render('view')
+//     console.log(shoe);
+//   })
+//   .catch(function(err) {
+//   console.log(err);
+// });
+// };
 // Shoe.create({
 //   name: "arella",
 //   shoeType: "flat",
@@ -23,46 +36,60 @@ const router = express.Router();
 
 router.get('/', function(req, res) {
   // let results = [];
-  Shoe.find({})
-  .then(function() {
-    // results = data;
+  Shoe.find({}).sort('name')
+  .then(function(shoe) {
+    res.render('view',{shoe: shoe})
     console.log(shoe);
   })
-//   .catch(function(err) {
-//   console.log(err);
-// });
-  res.render('view', {shoeCraze: shoe})
+  .catch(function(err) {
+  console.log(err);
+});
+  // res.render('view', {shoe: results});
 });
 // // , {shoes: results} goes in get
 //
-// router.post('/{{id}}/create', function(req, res) {
-//
-//   Shoe.create({
-//     name: req.body.name,
-//     shoeType: req.body.shoeType,
-//     shoeStyle: req.body.shoeStyle,
-//     shoeDetails: [{
-//       heelHeight: req.body.shoeDetails[0].heelHeight,
-//       color: req.body.shoeDetails[0].color,
-//       material: req.body.shoeDetails[0].material
-//     }]
-//   })
-//   .then(function(data) {
-//     // shoe.model.push(Shoe);
-//     console.log(data);
-//   })
-//   .catch(function(err) {
-//     console.log(err);
-//   })
-//   res.redirect('/', {nuShoe: results})
+router.post('/', function(req, res) {
+
+  Shoe.create({
+    name: req.body.name,
+    shoeType: req.body.shoeType,
+    shoeStyle: req.body.shoeStyle,
+    shoeDetails: [{
+      heelHeight: req.body.heelHeight,
+      color: req.body.color,
+      material: req.body.material
+    }]
+  })
+  .then(function(data) {
+    // console.log(data);
+    res.redirect('/')
+  })
+  .catch(function(err) {
+    console.log(err);
+  })
+  // res.redirect('/', {})
+});
+
+// router.post('/delete/:name', function(req, res) {
+  // let name = req.body.name;
+  //
+  // Shoe.deleteOne(name: name)
+  // .then(function(data) {
+  //   res.redirect('/')
+  // })
+  // .catch(function(err) {
+  //
+  // })
 // });
 
-// router.post('/{{id}}/delete', function(req, res) {
-//   res.redirect('/')
-// });
-
-// router.post('/{{id}}/edit', function(req, res) {
+// router.get('/edit/:name', function(req, res) {
+  // let name = req.params.name;
 //   res.redirect('/');
 // });
-
+// findOne
+// router.post('/edit/:name', function(req, res) {
+  // let name = req.params.name;
+//   res.redirect('/');
+// });
+// update
 module.exports = router;
