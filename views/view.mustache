@@ -3,7 +3,7 @@
   <input type="text" name="name" placeholder="Name of Shoe" value="">
   <input type="text" name="shoeType" placeholder="Shoe Type" value="">
   <input type="text" name="shoeStyle" placeholder="Shoe Style" value="">
-<h4>Shoe Details</h4>
+  <h4>Shoe Details</h4>
   <input type="text" name="heelHeight" placeholder="Heel Height" value="">
   <input type="text" name="size" placeholder="Size" value="">
   <input type="text" name="color" placeholder="Color" value="">
@@ -18,18 +18,17 @@
         {{name}}
         {{shoeType}}
         {{shoeStyle}}
-        {{heelHeight}},
-        {{size}},
-        {{color}},
-        {{material}}
+        {{shoeDetails.heelHeight}},
+        {{shoeDetails.size}},
+        {{shoeDetails.color}},
+        {{shoeDetails.material}}
       </li>
     </ul>
 
-<form class="" action="/delete" method="post">
+<!-- <form class="" action="/delete" method="post">
   <button type="submit" name="{{name}}">Trash</button>
-</form>
+</form> -->
+<a href="/delete/{{name}}">Trash</a>
+<a href="/edit/{{_id}}">Change Me</a>
 
-<form class="" action="/edit" method="post">
-<button type="submit" name="{{name}}">Change Me</button>
-</form>
 {{/shoe}}

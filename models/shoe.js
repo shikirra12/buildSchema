@@ -15,12 +15,12 @@ const shoeSchema = new Schema({
   shoeStyle: {
     type: String
   },
-  shoeDetails: [{
+  shoeDetails: {
     heelHeight: {type: Number, min: [1, "Gotta have some height!"]},
     size: {type: Number, min: [6, "Cannot be lower the size 6"], max: [10, "Cannot be greater than size 10"]},
-    color: {String},
+    color: String,
     material: [String]
-  }]
+  }
 });
 
 const Shoe = mongoose.model("Shoe", shoeSchema);
